@@ -13,13 +13,9 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Google Login"></app-explore-container>
 </ion-content>
-<ion-footer class="ion-no-border">
-  <ion-button expand="full" fill="outline" shape="round" color="primary" routerLink="/login">
-    LOGIN
-  </ion-button>
-  <ion-button expand="full" fill="outline" shape="round" color="secondary">
+<ion-footer class="ion-no-border">  
+  <ion-button expand="full" fill="outline" shape="round" color="secondary" (click)="logout()">
     LOGOUT
   </ion-button>
 </ion-footer>

@@ -68,11 +68,14 @@
     "plugins": {
       "cordova-plugin-facebook4": {
         "APP_ID": "2608643202745672",
-        "APP_NAME": "teste-login"
+        "APP_NAME": "teste-login",
+        "FACEBOOK_HYBRID_APP_EVENTS": "false",
+        "FACEBOOK_ANDROID_SDK_VERSION": "5.13.0"
       },
       "cordova-plugin-googleplus": {
         "REVERSED_CLIENT_ID": "531724067172-utc489g8pp107gdaobos7d27eeaqprov.apps.googleusercontent.com",
-        "WEB_APPLICATION_CLIENT_ID": "1:531724067172:web:efbbee5a753ff01728da71"
+        "WEB_APPLICATION_CLIENT_ID": "1:531724067172:web:efbbee5a753ff01728da71",
+        "PLAY_SERVICES_VERSION": "11.8.0"
       },
       "cordova-plugin-whitelist": {},
       "cordova-plugin-statusbar": {},

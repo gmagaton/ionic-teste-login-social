@@ -17,14 +17,18 @@ export class LoginPage implements OnInit {
   constructor(private platform: Platform, private router: Router, private fb: Facebook, private googlePlus: GooglePlus) { }
 
   async loginFacebook() {
+    alert("login face");
     if (this.platform.is("cordova")) {
-      this.fb.login(['public_profile', 'user_friends', 'email'])
+      await this.fb.login(['public_profile', 'user_friends', 'email'])
         .then((res: FacebookLoginResponse) => {
           alert("Logou Face");
           console.log('Logged into Facebook!', res);
           this.router.navigate(["/tabs/tab1"]);
         })
-        .catch(e => console.log('Error logging into Facebook', e));
+        .catch(e => {
+          alert("Erro: " + JSON.stringify(e));
+          console.log('Error logging into Facebook', e);
+        });
     } else {
       alert("web");
       ;
@@ -32,15 +36,21 @@ export class LoginPage implements OnInit {
 
   }
 
-  loginGoogle() {
-    if (this.platform.is("cordova")) {
-      this.googlePlus.login({})
+  async loginGoogle() {
+    alert("login google");
+    if (this.platform.is("cordova")) {      
+      await this.googlePlus.login({
+        "webClientId": "531724067172-utc489g8pp107gdaobos7d27eeaqprov.apps.googleusercontent.com"
+      })
         .then(res => {
           alert("Logou google");
           console.log('Logged into Google!', res);
           this.router.navigate(["/tabs/tab2"]);
         })
-        .catch(e => console.log('Error logging into Google', e));
+        .catch(e => {
+          alert("Erro: " + JSON.stringify(e));
+          console.log('Error logging into Google', e);
+        });
     } else {
       alert("web");
     }
