@@ -1,5 +1,7 @@
 {
   "name": "teste-login-social",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

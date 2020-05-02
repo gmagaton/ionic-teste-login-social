@@ -1,0 +1,18 @@
+{
+    "android": {
+        "debug": {
+            "keystore": "/Users/gabriel.magaton/desenvolvimento/projetos/ionic/teste-login-social/testelogin.keystore",
+            "storePassword": "changeit",
+            "alias": "testelogin",
+            "password" : "changeit",
+            "keystoreType": "JKS"
+        },
+        "release": {
+            "keystore": "/Users/gabriel.magaton/desenvolvimento/projetos/ionic/teste-login-social/testelogin.keystore",
+            "storePassword": "changeit",
+            "alias": "testelogin",
+            "password" : "changeit",
+            "keystoreType": "JKS"
+        }
+    }
+}

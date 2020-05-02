@@ -1,0 +1,26 @@
+<ion-content padding>
+  <ion-item>
+    <ion-label position="stacked">E-mail</ion-label>
+    <ion-input id="usuario_123" name="usuario_123" type="email" placeholder="Digite seu e-mail"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">E-mail</ion-label>
+    <ion-input id="senha_123" name="senha_123" type="password" placeholder="Digite sua senha"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" fill="outline" shape="round" color="dark" (click)="entrar()">
+    Entrar
+  </ion-button>
+
+  <div class="ion-text-center">
+    <h2>OU</h2>
+  </div>
+
+  <ion-button expand="full" fill="solid" shape="round" color="danger" (click)="loginGoogle()">
+    <ion-icon slot="start" name="logo-google"></ion-icon>Entrar com Google
+  </ion-button>
+  <ion-button expand="full" fill="solid" shape="round" color="primary" (click)="loginFacebook()">
+    <ion-icon slot="start" name="logo-facebook"></ion-icon>Entrar com Facebook
+  </ion-button>
+
+</ion-content>
