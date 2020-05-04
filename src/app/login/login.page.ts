@@ -35,7 +35,7 @@ export class LoginPage implements OnInit {
               this.router.navigate(["/tabs/tab1"]);
             })
             .catch(e => {
-              alert("Erro: " + JSON.stringify(e));
+              alert("Erro ao logar com facebook no firebase: "+JSON.stringify(e));
               console.log('Error logging into Facebook Firebase', e);
             });
         })
@@ -48,7 +48,7 @@ export class LoginPage implements OnInit {
           this.router.navigate(["/tabs/tab1"]);
         })
         .catch(e => {
-          console.log('Error logging into Facebook', e);
+          alert("Erro ao logar com facebook: "+JSON.stringify(e));
         });
     }
 
@@ -66,11 +66,13 @@ export class LoginPage implements OnInit {
             .then(success => {
               this.router.navigate(["/tabs/tab2"]);
             })
-            .catch(e => {              
+            .catch(e => {  
+              alert("Erro ao logar com google no firebase: "+JSON.stringify(e));
               console.log('Error logging into Facebook Firebase', e);
             });
         })
         .catch(e => {
+          alert("Erro ao logar com google: "+JSON.stringify(e));
           console.log('Error logging into Google', e);
         });
     } else {
@@ -79,7 +81,7 @@ export class LoginPage implements OnInit {
           this.router.navigate(["/tabs/tab2"]);
         })
         .catch(e => {
-          console.log('Error logging into Google', e);
+          alert("Erro ao logar com google: "+JSON.stringify(e));
         });
     }
   }
