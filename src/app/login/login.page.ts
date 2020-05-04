@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { Platform } from '@ionic/angular';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-login',
@@ -11,48 +13,74 @@ import { Platform } from '@ionic/angular';
 export class LoginPage implements OnInit {
 
   ngOnInit() {
-
+    // this.fireAuth.onAuthStateChanged().subscribe(res =>{
+    //   alert("alterou usuario: "+JSON.stringify(res));
+    // });
   }
 
-  constructor(private platform: Platform, private router: Router, private fb: Facebook, private googlePlus: GooglePlus) { }
+  constructor(
+    private fireAuth: AngularFireAuth,
+    private platform: Platform,
+    private router: Router,
+    private fb: Facebook,
+    private googlePlus: GooglePlus) { }
 
   async loginFacebook() {
-    alert("login face");
     if (this.platform.is("cordova")) {
-      await this.fb.login(['public_profile', 'user_friends', 'email'])
+      await this.fb.login(['public_profile', 'email'])
         .then((res: FacebookLoginResponse) => {
-          alert("Logou Face");
-          console.log('Logged into Facebook!', res);
-          this.router.navigate(["/tabs/tab1"]);
+          const facebookCredential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
+          this.fireAuth.signInWithCredential(facebookCredential)
+            .then(success => {
+              this.router.navigate(["/tabs/tab1"]);
+            })
+            .catch(e => {
+              alert("Erro: " + JSON.stringify(e));
+              console.log('Error logging into Facebook Firebase', e);
+            });
         })
         .catch(e => {
-          alert("Erro: " + JSON.stringify(e));
           console.log('Error logging into Facebook', e);
         });
     } else {
-      alert("web");
-      ;
+      await this.fireAuth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
+        .then((res: firebase.auth.UserCredential) => {
+          this.router.navigate(["/tabs/tab1"]);
+        })
+        .catch(e => {
+          console.log('Error logging into Facebook', e);
+        });
     }
 
   }
 
   async loginGoogle() {
-    alert("login google");
-    if (this.platform.is("cordova")) {      
+
+    if (this.platform.is("cordova")) {
       await this.googlePlus.login({
         "webClientId": "531724067172-utc489g8pp107gdaobos7d27eeaqprov.apps.googleusercontent.com"
       })
         .then(res => {
-          alert("Logou google");
-          console.log('Logged into Google!', res);
-          this.router.navigate(["/tabs/tab2"]);
+          const googleCredential = firebase.auth.GoogleAuthProvider.credential(res.authResponse.accessToken);
+          this.fireAuth.signInWithCredential(googleCredential)
+            .then(success => {
+              this.router.navigate(["/tabs/tab2"]);
+            })
+            .catch(e => {              
+              console.log('Error logging into Facebook Firebase', e);
+            });
         })
         .catch(e => {
-          alert("Erro: " + JSON.stringify(e));
           console.log('Error logging into Google', e);
         });
     } else {
-      alert("web");
+      await this.fireAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+        .then((res: firebase.auth.UserCredential) => {
+          this.router.navigate(["/tabs/tab2"]);
+        })
+        .catch(e => {
+          console.log('Error logging into Google', e);
+        });
     }
   }
 

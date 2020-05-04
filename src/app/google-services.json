@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "531724067172",
+    "firebase_url": "https://teste-login-275819.firebaseio.com",
+    "project_id": "teste-login-275819",
+    "storage_bucket": "teste-login-275819.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531724067172:android:312c6c44de1764f828da71",
+        "android_client_info": {
+          "package_name": "br.com.magaton.testelogin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "531724067172-lipbu63dd21ke3sfjas5if0gd8beb7l1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.magaton.testelogin",
+            "certificate_hash": "affd4de63ead3afc860129745144224ee73d6a09"
+          }
+        },
+        {
+          "client_id": "531724067172-utc489g8pp107gdaobos7d27eeaqprov.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLei4VyCau5FH7yBMkk4gTlDUXuh5vGY0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "531724067172-utc489g8pp107gdaobos7d27eeaqprov.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
